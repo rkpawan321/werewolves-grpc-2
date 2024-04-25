@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package werewolves;
+
+// The service definition.
+service WerewolvesGame {
+  // Sends a greeting
+  rpc Connect(PlayerInfo) returns (MessageResponse);
+  rpc Vote(VoteRequest) returns (VoteResponse);
+  rpc ReceiveMessages(PlayerInfo) returns (stream MessageResponse);
+}
+
+// The request message containing the user's name.
+message PlayerInfo {
+  string username = 1;
+}
+
+// The response message containing the greetings
+message MessageResponse {
+  string message = 1;
+}
+
+// The request message for a vote
+message VoteRequest {
+  string voter = 1;
+  string votee = 2;
+}
+
+// The response message after a vote
+message VoteResponse {
+  string message = 1;
+}
